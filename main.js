@@ -21,9 +21,11 @@ startGame();
 restart.addEventListener("click", startGame)
 
 function startGame(){
+    circlesTurn = false;
     cellElements.forEach(cell => {
         cell.addEventListener("click", handleClick, {once:true})
     })
+    winner.classList.remove(winnerText);
 }
 
 function handleClick(e){
@@ -53,7 +55,7 @@ function endGame(draw){
     } else {
         winner.innerHTML = `${circlesTurn ? "0's" : "X's"} Wins!`;
     }
-    winner.classList.add(winnerText)
+    winner.classList.add(winnerText);
 }
 
 function placeMark(cell, currentClass){
