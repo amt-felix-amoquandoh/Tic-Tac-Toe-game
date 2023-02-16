@@ -1,7 +1,19 @@
 const cellElements = document.querySelectorAll(".game--cell");
 const restart = document.querySelector(".game--restart");
+const winner = document.querySelector(".game--field");
+const winnings = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+];
 const xclass = "-cross";
 const circleClass = "-circle";
+const winnerText = "-win";
 let circlesTurn;
 
 startGame();
@@ -18,11 +30,23 @@ function handleClick(e){
     const cell = e.target;
     const currentClass = circlesTurn ? circleClass : xclass;
     //place mark
-    placeMark(cell, currentClass)
-    //check for winner
-    //check for draw
-    //switch turns 
-    swapTurns()
+    placeMark(cell, currentClass);
+    if (checkWin(currentClass)) {
+        endGame(false);
+    } else if (isDraw()){
+        endGame(true);
+    } else{
+      swapTurns()
+    }
+}
+
+function endGame(draw){
+    if (draw) {
+        winner.innerText ="Draw!"
+    } else {
+        winner.innerHTML = `${circlesTurn ? "0's" : "X's"} Wins!`;
+    }
+    winner.classList.add(winnerText)
 }
 
 function placeMark(cell, currentClass){
@@ -33,4 +57,14 @@ function swapTurns(){
     circlesTurn = !circlesTurn;
 }
 
-restart.addEventListener("click", startGame);
+function checkWin(currentClass){
+   return winnings.some(combination => {
+        return combination.every(index => {
+            return cellElements[index].classList.contains(currentClass);
+        })
+    })
+}
+
+// restart.addEventListener("click", function(){
+//  console.log("you sdsdsds");
+// })
