@@ -18,9 +18,9 @@ let circlesTurn;
 
 startGame();
 
+restart.addEventListener("click", startGame)
 
 function startGame(){
-    circlesTurn = false;
     cellElements.forEach(cell => {
         cell.addEventListener("click", handleClick, {once:true})
     })
@@ -38,6 +38,13 @@ function handleClick(e){
     } else{
       swapTurns()
     }
+}
+
+
+function isDraw(){
+    return [...cellElements].every(cell => {
+        return cell.classList.contains(xclass) || cell.classList.contains(circleClass) 
+    })
 }
 
 function endGame(draw){
@@ -65,6 +72,4 @@ function checkWin(currentClass){
     })
 }
 
-// restart.addEventListener("click", function(){
-//  console.log("you sdsdsds");
-// })
+
