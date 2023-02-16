@@ -1,0 +1,114 @@
+.game {
+  max-width: 700px;
+  font-family: sans-serif;
+  box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+}
+.game--field {
+  width: 100%;
+  height: 350px;
+  background-color: #14bdac;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game--field.-win .game--overlay {
+  display: flex;
+  flex-direction: column;
+}
+.game--field.-win .game--grid {
+  display: none;
+}
+.game--field.-win .game--winner {
+  font-size: 40px;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+.game--field.-cross .game--cross {
+  fill: #666;
+  height: 200px;
+  width: 200px;
+}
+.game--field.-cross .game--circle {
+  display: none;
+}
+.game--field.-circle .game--cross {
+  display: none;
+}
+.game--field.-circle .game--circle {
+  height: 200px;
+  width: 200px;
+}
+.game--field.-circle .game--circle circle {
+  stroke: #f5f6f7;
+}
+.game--overlay {
+  display: none;
+}
+.game--grid {
+  display: table;
+  table-layout: fixed;
+}
+.game--row {
+  display: table-row;
+}
+.game--row:nth-of-type(2) .game--cell {
+  border-top: 8px solid #11a293;
+  border-bottom: 8px solid #11a293;
+}
+.game--cell {
+  height: 80px;
+  width: 80px;
+  display: table-cell;
+  position: relative;
+}
+.game--cell:nth-of-type(even) {
+  border-left: 8px solid #11a293;
+  border-right: 8px solid #11a293;
+}
+.game--cell svg {
+  display: none;
+}
+.game--cell.-cross .game--circle {
+  display: none;
+}
+.game--cell.-cross .game--cross {
+  display: block;
+  fill: #666;
+  height: 60px;
+  width: 60px;
+  margin: -30px -30px auto auto;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+}
+.game--cell.-circle .game--cross {
+  display: none;
+}
+.game--cell.-circle .game--circle {
+  display: block;
+  height: 60px;
+  width: 60px;
+  margin: -30px -30px auto auto;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+}
+.game--cell.-circle .game--circle circle {
+  stroke: #f5f6f7;
+}
+.game--restart {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #14bdac;
+  background-color: #f5f6f7;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.05);
+}
