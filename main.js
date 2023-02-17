@@ -23,6 +23,9 @@ restart.addEventListener("click", startGame)
 function startGame(){
     circlesTurn = false;
     cellElements.forEach(cell => {
+        cell.classList.remove(xclass);
+        cell.classList.remove(circleClass); 
+        cell.removeEventListener("click", handleClick);
         cell.addEventListener("click", handleClick, {once:true})
     })
     winner.classList.remove(winnerText);
